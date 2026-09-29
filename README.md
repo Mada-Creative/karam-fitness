@@ -30,22 +30,36 @@ Original name, design and code: no third-party trademarks, logos or copied artwo
 - المعادلة لـ SOLVE: `ALPHA` + `CALC` بيكتب `=`، مثال: `X² = 2` وبعدين `SHIFT` + `CALC`.
 - على الكمبيوتر بتقدر تستخدم الكيبورد (أرقام، عمليات، Enter، Backspace، Esc، الأسهم).
 
-## التثبيت على التلفون · Install on your phone
+## تطبيق أندرويد · Android app
 
-1. من إعدادات الريبو على GitHub: **Settings → Pages → Source: GitHub Actions**.
-2. أي push على `main` بيشغّل الاختبارات وبينشر التطبيق على
-   `https://<username>.github.io/calculator/`.
-3. افتح الرابط على التلفون:
-   - **Android (Chrome):** القائمة ⋮ ← *Add to Home screen / Install app*.
-   - **iPhone (Safari):** زر المشاركة ← *Add to Home Screen*.
+التطبيق مبني كتطبيق أندرويد حقيقي (APK) باستخدام Capacitor: بيظهر بقائمة التطبيقات بأيقونته، بيفتح كامل الشاشة، زر الرجوع بيشتغل، وبدون إنترنت.
 
-بعد التثبيت بيفتح كتطبيق كامل الشاشة وبيشتغل بدون إنترنت.
+1. أي push على `main` بيبني ملف **Calculator.apk** تلقائياً (GitHub Actions ← *Android APK*) وبينشره بصفحة **Releases** بالريبو.
+2. من التلفون افتح `https://github.com/Mada-Creative/<repo>/releases/latest` ونزّل `Calculator.apk`.
+3. افتح الملف واسمح بـ *Install unknown apps* لأول مرة، وبعدين *Install*.
+
+**توقيع ثابت للتحديثات (اختياري بس مستحسن):** بدون توقيع خاص، كل بناء بيتوقّع بمفتاح debug مختلف، فلازم تحذف النسخة القديمة قبل ما تنزّل الجديدة.
+لتحديثات مباشرة فوق القديم، اعمل keystore مرة وحدة:
+
+```bash
+keytool -genkeypair -v -keystore release.jks -alias calculator -keyalg RSA -keysize 2048 -validity 10000
+base64 -w0 release.jks   # انسخ الناتج
+```
+
+وحط بالريبو (**Settings → Secrets and variables → Actions**):
+`ANDROID_KEYSTORE_BASE64`، `ANDROID_KEYSTORE_PASSWORD`، `ANDROID_KEY_ALIAS` (= calculator)، `ANDROID_KEY_PASSWORD`.
+احتفظ بملف `release.jks` بمكان آمن، وما تحطه بالريبو.
+
+**iPhone:** تطبيق iOS حقيقي بيحتاج جهاز Mac وحساب Apple Developer (99$ بالسنة). لحد ذلك، النسخة الويب بتشتغل على الآيفون:
+فعّل **Settings → Pages → Source: GitHub Actions**، افتح `https://<username>.github.io/<repo>/` بـ Safari ← مشاركة ← *Add to Home Screen*.
 
 ## التطوير · Development
 
 ```bash
-npm test      # engine unit tests (Node 18+)
-npm start     # serve locally at http://localhost:8080
+npm test              # engine unit tests (Node 18+)
+npm start             # serve locally at http://localhost:8080
+npm run android:sync  # copy the web app into the Android project
+npx cap open android  # open in Android Studio (optional, for local builds)
 ```
 
 ```
@@ -53,7 +67,10 @@ index.html              page shell
 css/styles.css          design
 js/engine.js            parser, evaluator, solvers, statistics, base-N (no DOM, unit-tested)
 js/app.js               keypad, screens, modes, persistence
-sw.js                   offline cache
-manifest.webmanifest    install metadata
+sw.js                   offline cache (web only)
+manifest.webmanifest    web install metadata
+android/                Android (Capacitor) project
+capacitor.config.json   app id and name
+scripts/build-web.js    copies the web app into www/
 tests/engine.test.js    unit tests
 ```

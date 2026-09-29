@@ -1293,9 +1293,30 @@
     load();
     render();
 
-    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    const native = window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform();
+    if (native) setupNative();
+    else if ('serviceWorker' in navigator && location.protocol !== 'file:') {
       navigator.serviceWorker.register('sw.js').catch(() => {});
     }
+  }
+
+  // Android app: the hardware back button steps back through menus and
+  // screens before leaving the app.
+  function setupNative() {
+    const App = window.Capacitor.Plugins && window.Capacitor.Plugins.App;
+    if (!App) return;
+    App.addListener('backButton', () => {
+      const v = S.view;
+      if (S.menu) closeMenu();
+      else if (v && v.type === 'list') listBack();
+      else if (v && (v.ed || v.error)) formHandler.ac();
+      else if (v && S.mode === 'COMP') S.view = null;
+      else if (S.shift || S.alpha || S.sto) { S.shift = false; S.alpha = false; S.sto = false; }
+      else if (S.mode !== 'COMP') enterMode('COMP');
+      else { App.exitApp(); return; }
+      save();
+      render();
+    });
   }
 
   document.addEventListener('DOMContentLoaded', init);
