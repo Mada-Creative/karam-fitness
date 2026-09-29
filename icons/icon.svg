@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#1b1e24"/>
+  <rect x="80" y="72" width="352" height="136" rx="22" fill="#cfd8cb"/>
+  <text x="400" y="170" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="700" fill="#1c2320" text-anchor="end">√π</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="64" text-anchor="middle">
+    <rect x="80" y="248" width="160" height="88" rx="20" fill="#e8e6e1"/>
+    <text x="160" y="314" fill="#1d2026">x²</text>
+    <rect x="272" y="248" width="160" height="88" rx="20" fill="#f4a93b"/>
+    <text x="352" y="314" fill="#2a1a00">÷</text>
+    <rect x="80" y="360" width="160" height="88" rx="20" fill="#3fd0c4"/>
+    <text x="160" y="426" fill="#002b27">Σ</text>
+    <rect x="272" y="360" width="160" height="88" rx="20" fill="#3a86ff"/>
+    <text x="352" y="424" fill="#ffffff">=</text>
+  </g>
+</svg>
