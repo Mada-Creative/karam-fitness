@@ -1,76 +1,110 @@
-# Calculator — حاسبة علمية للموبايل
+# Calculator — حاسبة علمية (React Native)
 
-حاسبة علمية كاملة بتشتغل على التلفون كتطبيق (PWA): بتنزّلها على الشاشة الرئيسية وبتشتغل بدون إنترنت.
-التصميم والاسم والكود كلهم أصليين؛ ما في أي شعار أو علامة تجارية أو تصميم منسوخ من شركة ثانية.
+تطبيق حاسبة علمية لـ **iOS و Android**، مكتوب بـ **React Native + Expo** بلغة **JavaScript**.
+الاسم والتصميم والكود أصليين؛ ما في أي شعار أو علامة تجارية لشركة ثانية.
 
-A full scientific calculator for phones, built as an installable, offline-capable web app.
-Original name, design and code: no third-party trademarks, logos or copied artwork.
+## المميزات
 
-## المميزات · Features
-
-| الوضع · Mode | شو بيعمل · What it does |
+| الوضع | شو بيعمل |
 |---|---|
-| **COMP** | حسابات عامة بأولوية عمليات صحيحة، نتائج دقيقة (كسور، جذور √، مضاعفات π)، `S⇔D` للتحويل لعشري |
-| | sin/cos/tan وعكسها، hyp، log، ln، log بأساس (`log(a,b)`)، جذور، أسس، `x!`، `nPr`، `nCr`، `%` |
-| | ∫ تكامل، d/dx اشتقاق، Σ مجموع، Π ضرب، Pol/Rec، GCD، LCM، Int، Intg، Rnd، Ran#، RanInt# |
-| | متغيرات A–F، M، X، Y مع `STO` و `RCL`، ذاكرة `M+`/`M−`، `Ans`، `ENG`، سجل العمليات |
-| | **CALC** (بيسألك عن قيم المتغيرات) و **SOLVE** (بيحل معادلة مثل `X²=2`) |
-| **EQN** | معادلتين بمجهولين، ثلاث معادلات بثلاث مجاهيل، معادلات تربيعية وتكعيبية ودرجة رابعة (مع حلول مركبة، وحلول دقيقة مثل `1 ± √2`) |
-| **STAT** | إحصاء متغير واحد (المتوسط، الانحراف المعياري، الربيعيات...) وانحدار خطي `y = a + bx` |
+| **COMP** | حسابات عامة، نتائج دقيقة (كسور، جذور √، π) مع `S⇔D`، مثلثات و hyp، log/ln، أسس وجذور، `x!`، `nPr`/`nCr`، ∫، d/dx، Σ، Π، Pol/Rec، GCD/LCM، متغيرات A–F/M/X/Y، `STO`/`RCL`، `M+`/`M−`، `Ans`، `ENG`، سجل العمليات، **CALC** و **SOLVE** |
+| **EQN** | معادلتين/ثلاث بمجاهيل، ومعادلات درجة 2 و 3 و 4 (حلول مركبة، وحلول دقيقة مثل `1 ± √2`) |
+| **STAT** | إحصاء متغير واحد، وانحدار خطي `y = a + bx` |
 | **TABLE** | جدول قيم لـ f(X) و g(X) |
-| **BASE-N** | عشري، ست عشري، ثنائي، ثماني (32-bit) مع and / or / xor / xnor / Not / Neg |
-| **SETUP** | Deg / Rad / Gra، Fix، Sci، Norm 1/2، تشغيل/إيقاف النتائج الدقيقة، اهتزاز الأزرار |
+| **BASE-N** | DEC / HEX / BIN / OCT مع and / or / xor / xnor / Not / Neg |
+| **SETUP** | Deg/Rad/Gra، Fix/Sci/Norm، النتائج الدقيقة، اهتزاز الأزرار |
 
-## طريقة الاستخدام · Keys
+الحالة (المتغيرات، السجل، الإعدادات) بتنحفظ على الجهاز، وزر الرجوع بأندرويد بيرجع خطوة خطوة.
 
-- **SHIFT** (برتقالي) بيفعّل الوظيفة المكتوبة بالبرتقالي فوق الزر، و **ALPHA** (فيروزي) للمتغيرات والحروف.
-- `MODE` لتغيير الوضع، `SHIFT` + `MODE` للإعدادات، `HIST` لسجل العمليات، `SHIFT` + `HIST` لعرض المتغيرات.
-- `STO` وبعده زر المتغير (مثلاً `(−)` = A) لتخزين النتيجة.
-- الأسهم ▲▼ بترجعلك العمليات السابقة، و ◀ ▶ للتعديل على العملية.
-- المعادلة لـ SOLVE: `ALPHA` + `CALC` بيكتب `=`، مثال: `X² = 2` وبعدين `SHIFT` + `CALC`.
-- على الكمبيوتر بتقدر تستخدم الكيبورد (أرقام، عمليات، Enter، Backspace، Esc، الأسهم).
+## المتطلبات على اللابتوب
 
-## تطبيق أندرويد · Android app
+- **Node.js 20 أو أحدث** ([nodejs.org](https://nodejs.org)) و **git**
+- حساب **Expo** مجاني: [expo.dev/signup](https://expo.dev/signup)
+- للنشر: **Apple Developer** (99$ بالسنة) و **Google Play Console** (25$ مرة وحدة)
 
-التطبيق مبني كتطبيق أندرويد حقيقي (APK) باستخدام Capacitor: بيظهر بقائمة التطبيقات بأيقونته، بيفتح كامل الشاشة، زر الرجوع بيشتغل، وبدون إنترنت.
+> ما بتحتاج Mac: البناء بيصير على سيرفرات Expo (EAS Build) وبتتحكم فيه من التيرمينال.
 
-1. أي push على `main` بيبني ملف **Calculator.apk** تلقائياً (GitHub Actions ← *Android APK*) وبينشره بصفحة **Releases** بالريبو.
-2. من التلفون افتح `https://github.com/Mada-Creative/<repo>/releases/latest` ونزّل `Calculator.apk`.
-3. افتح الملف واسمح بـ *Install unknown apps* لأول مرة، وبعدين *Install*.
-
-**توقيع ثابت للتحديثات (اختياري بس مستحسن):** بدون توقيع خاص، كل بناء بيتوقّع بمفتاح debug مختلف، فلازم تحذف النسخة القديمة قبل ما تنزّل الجديدة.
-لتحديثات مباشرة فوق القديم، اعمل keystore مرة وحدة:
+## 1) التشغيل والتجربة
 
 ```bash
-keytool -genkeypair -v -keystore release.jks -alias calculator -keyalg RSA -keysize 2048 -validity 10000
-base64 -w0 release.jks   # انسخ الناتج
+git clone https://github.com/Mada-Creative/karam-fitness.git calculator
+cd calculator
+npm install
+npx expo start
 ```
 
-وحط بالريبو (**Settings → Secrets and variables → Actions**):
-`ANDROID_KEYSTORE_BASE64`، `ANDROID_KEYSTORE_PASSWORD`، `ANDROID_KEY_ALIAS` (= calculator)، `ANDROID_KEY_PASSWORD`.
-احتفظ بملف `release.jks` بمكان آمن، وما تحطه بالريبو.
-
-**iPhone:** تطبيق iOS حقيقي بيحتاج جهاز Mac وحساب Apple Developer (99$ بالسنة). لحد ذلك، النسخة الويب بتشتغل على الآيفون:
-فعّل **Settings → Pages → Source: GitHub Actions**، افتح `https://<username>.github.io/<repo>/` بـ Safari ← مشاركة ← *Add to Home Screen*.
-
-## التطوير · Development
+نزّل تطبيق **Expo Go** على تلفونك (App Store / Google Play)، وامسح الـ QR اللي بيطلع بالتيرمينال.
+أي تعديل بالكود بيظهر فوراً على التلفون.
 
 ```bash
-npm test              # engine unit tests (Node 18+)
-npm start             # serve locally at http://localhost:8080
-npm run android:sync  # copy the web app into the Android project
-npx cap open android  # open in Android Studio (optional, for local builds)
+npm test    # اختبارات محرك الحسابات والمنطق
 ```
 
+## 2) الإعداد لأول مرة (مرة وحدة)
+
+```bash
+npm install -g eas-cli
+eas login        # بحساب Expo
+eas init         # بيربط المشروع بحسابك وبيضيف projectId على app.json (اعمله commit)
 ```
-index.html              page shell
-css/styles.css          design
-js/engine.js            parser, evaluator, solvers, statistics, base-N (no DOM, unit-tested)
-js/app.js               keypad, screens, modes, persistence
-sw.js                   offline cache (web only)
-manifest.webmanifest    web install metadata
-android/                Android (Capacitor) project
-capacitor.config.json   app id and name
-scripts/build-web.js    copies the web app into www/
-tests/engine.test.js    unit tests
+
+**قبل أول بناء، راجع بـ `app.json`:**
+
+- `ios.bundleIdentifier` و `android.package` (حالياً `com.madacreative.calculator`). ما بتقدر تغيّرهم بعد أول نشر.
+- `name` هو الاسم تحت الأيقونة. اسم التطبيق بالمتجر لازم يكون **فريد**، و "Calculator" لحاله أكيد محجوز، فاختار اسم مميز بـ App Store Connect و Play Console.
+
+## 3) iOS → App Store Connect
+
+```bash
+eas build --platform ios --profile production
+eas submit --platform ios --latest
+```
+
+- أول `eas build` بيطلب تسجيل دخول Apple، وبيعمل الشهادات و provisioning لحاله.
+- `eas submit` برفع النسخة على **App Store Connect** (وبيعمل سجل التطبيق إذا مش موجود). بعد المعالجة بتظهر بـ **TestFlight**.
+- من App Store Connect: عبّي الوصف والصور و Privacy (التطبيق ما بيجمع أي بيانات)، وبعدين **Submit for Review**.
+
+## 4) Android → Google Play
+
+```bash
+# نسخة تجريبية APK بتنزلها على أي تلفون مباشرة:
+eas build --platform android --profile preview
+
+# نسخة المتجر (AAB):
+eas build --platform android --profile production
+```
+
+- **أول مرة لازم ترفع الـ AAB يدوياً**: حمّله من الرابط اللي بيعطيك إياه EAS، وبـ Play Console اعمل التطبيق وارفعه على *Internal testing*.
+- بعد هيك الرفع بيصير من التيرمينال:
+  ```bash
+  eas submit --platform android --latest
+  ```
+  (بيطلب مفتاح Service Account من Google Cloud، وخطواته هون: [docs.expo.dev/submit/android](https://docs.expo.dev/submit/android/)).
+- الحسابات الشخصية الجديدة على Google Play لازم تعمل **Closed testing مع 12 مختبر لمدة 14 يوم** قبل النشر للعامة.
+
+## 5) تحديثات لاحقة
+
+عدّل `version` بـ `app.json` (مثلاً `1.0.1`)، وبعدين نفس أوامر `eas build` و `eas submit`.
+رقم البناء (build number / versionCode) بيزيد تلقائياً (`autoIncrement` بـ `eas.json`).
+
+## بناء محلي (اختياري)
+
+- **iOS**: بيحتاج Mac عليه Xcode: `npx expo run:ios --configuration Release`
+- **Android**: بيحتاج Android Studio: `npx expo run:android --variant release`
+- أو: `eas build --local --platform ios|android`
+
+## هيكل المشروع
+
+```
+App.js                       الشاشة الرئيسية، الحفظ، زر الرجوع، الاهتزاز
+index.js                     نقطة البداية
+app.json                     الاسم، الأيقونات، bundle id / package
+eas.json                     إعدادات البناء والرفع (EAS)
+assets/                      الأيقونات وصورة البداية
+src/core/engine.js           محرك الحسابات (parser، معادلات، إحصاء، base-N)
+src/core/calculator.js       منطق الحاسبة والأوضاع (بدون واجهة، مختبَر)
+src/core/keys.js             الأزرار وترتيبها
+src/core/mathRuns.js         تحويل الأرقام لكسور/جذور/أسس للعرض
+src/components/              Display، Keypad، MenuSheet، MathRun، ExprLine
+tests/                       اختبارات (node --test)
 ```
