@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const E = require('../js/engine.js');
+const E = require('../src/core/engine.js');
 
 const val = (s, opts) => E.calc(s, opts).value;
 const near = (a, b, tol = 1e-9) => assert.ok(Math.abs(a - b) <= tol * Math.max(1, Math.abs(b)), `${a} ≈ ${b}`);
